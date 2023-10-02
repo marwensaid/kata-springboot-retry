@@ -1,14 +1,11 @@
 package com.howtodoinjava.app.config;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.retry.annotation.EnableRetry;
 import org.springframework.retry.backoff.FixedBackOffPolicy;
 import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
 
-@EnableRetry
-@Configuration
+//TODO this class is a configuration class enabled to retry
 public class RetryConfig {
 
   @Bean
@@ -17,7 +14,7 @@ public class RetryConfig {
 
     //Fixed delay of 2 seconds between retries
     FixedBackOffPolicy fixedBackOffPolicy = new FixedBackOffPolicy();
-    fixedBackOffPolicy.setBackOffPeriod(2000l);
+    fixedBackOffPolicy.setBackOffPeriod(2000L);
     retryTemplate.setBackOffPolicy(fixedBackOffPolicy);
 
     //Retry only 2 times

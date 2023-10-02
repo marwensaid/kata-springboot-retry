@@ -1,14 +1,11 @@
 package com.howtodoinjava.app;
 
-import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Recover;
-import org.springframework.retry.annotation.Retryable;
 
 public interface BackendAdapter {
 
-  @Retryable(retryFor = {RemoteServiceNotAvailableException.class},
-      maxAttempts = 3,
-      backoff = @Backoff(delay = 1000))
+
+  //TODO: use retryable annotation with max 3 times and 1s delay
   public String getBackendResponse(String param1, String param2);
 
   @Recover
